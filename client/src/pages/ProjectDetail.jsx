@@ -170,14 +170,19 @@ export default function ProjectDetail() {
         <h2>Team</h2>
         <div className="members-list">
           <div className="member-tag">
-            {project.admin.name} <span className="badge">Admin</span>
+            <span className="member-avatar">{project.admin.name.charAt(0).toUpperCase()}</span>
+            <span className="member-name">{project.admin.name}</span>
+            <span style={{ color: '#888', fontSize: '0.8rem' }}>{project.admin.email}</span>
+            <span className="badge">Admin</span>
           </div>
           {project.members.map((m) => (
             <div className="member-tag" key={m._id}>
-              {m.name}
+              <span className="member-avatar" style={{ background: '#6b7280' }}>{m.name.charAt(0).toUpperCase()}</span>
+              <span className="member-name">{m.name}</span>
+              <span style={{ color: '#888', fontSize: '0.8rem' }}>{m.email}</span>
               {isAdmin && (
                 <button
-                  className="btn-icon"
+                  className="btn-icon text-red"
                   onClick={() => handleRemoveMember(m._id)}
                   title="Remove member"
                 >
